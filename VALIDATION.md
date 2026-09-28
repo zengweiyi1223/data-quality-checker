@@ -1,6 +1,6 @@
 # data-quality-checker — Run 001 验证记录
 
-- 状态：`In Progress — HG-02 Passed；STG-05 In Progress`
+- 状态：`In Progress — STG-05 Passed；HG-03 Pending`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
 - 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
@@ -31,8 +31,8 @@
 | STG-02 | Passed | Contract、Oracle、验收、安全、停止、结论、Gate、计时经 HG-01 批准。 | `REQUIREMENTS.md` | — | `70fb532` |
 | STG-03 | Passed | 技术方案、UI、Core API、Adapter、测试、静态构建与 Pages 方案经 HG-02 批准。 | `TECH_DESIGN.md` | DCS-003/004 | C1 |
 | STG-04 | Passed | 工具预检、原子计划、Git checkpoint 和记录映射经 HG-02 批准。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | C1 |
-| STG-05 | In Progress | HG-02 已通过；按 I-01～I-06 原子循环实施。 | 后续 evidence | — | C2～C6 |
-| STG-06 | Not Started | — | — | — | — |
+| STG-05 | Passed | I-01～I-05 已逐项 Execute–Verify；I-06 自动综合验收候选通过。 | `evidence/I-01-SCAFFOLD.md` 至 `evidence/I-06-INTEGRATED.md` | DEV-001 | C2～C6 |
+| STG-06 | In Progress | 固定 Oracle、Core、Adapter、真实浏览器、构建重载和 Network 证据已通过；等待用户 UAT。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | — | HG-03 pending |
 | STG-07 | Not Started | 必须等待 HG-03 与 HG-04。 | — | — | — |
 | STG-08 | Not Started | 仅在公开部署完成时触发。 | — | — | — |
 | STG-09 | Not Started | — | — | — | — |
@@ -45,8 +45,8 @@
 | I-02 Core | Passed | 明确类型与 `checkTable`；6 个绕过 UI/Adapter 的测试通过；冻结 Oracle deep equality；Core 禁用符号扫描无命中。 | `evidence/I-02-CORE.md` | Passed | C3 `12d0e38` |
 | I-03 Adapter | Passed | CSV 状态机和稳定错误代码；12 个 Adapter 测试通过，含精确标准表、CRLF/引号/嵌入换行与错误边界；全套 18/18。 | `evidence/I-03-ADAPTER.md` | Passed | C4 `86e59fd` |
 | I-04 UI | Passed | File→Adapter→Core→UI 已连接；真实 Edge 验证成功、错误、替换和刷新；精确 DOM Oracle 通过；首次 favicon 404 阻断后修复并完整重跑。 | `evidence/I-04-BROWSER.md`、`evidence/browser-success.png` | Passed | C5 `8b77715` |
-| I-05 安全与构建往返 | Passed | 23/23 测试；无运行时依赖；CSP/网络/存储/模块边界静态检查；两次干净构建全文件 hash 相同；新服务器/Edge 重载与 5 MiB 护栏通过。 | `evidence/I-05-SECURITY-BUILD.md` | 允许进入 I-06 | C6 待提交 |
-| I-06 综合验收候选 | Not Started | — | — | Blocked by I-05 checkpoint | — |
+| I-05 安全与构建往返 | Passed | 23/23 测试；无运行时依赖；CSP/网络/存储/模块边界静态检查；两次干净构建全文件 hash 相同；新服务器/Edge 重载与 5 MiB 护栏通过。 | `evidence/I-05-SECURITY-BUILD.md` | Passed | `bc4cee3` |
+| I-06 综合验收候选 | Passed / HG-03 Pending | frozen install、typecheck、23/23、build、Edge 全流程重跑通过；AC-01～09 机器证据齐备，人工体验尚待用户确认。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | 停在 HG-03 | C6 release candidate 待提交 |
 
 ## 3. Human Gate
 
@@ -54,7 +54,7 @@
 | --- | --- | --- | --- | --- | --- |
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
 | HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
-| HG-03 | UAT | 未发出。 | Not Started | — | No |
+| HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | Pending | `UAT.md` + 当前对话 | No |
 | HG-04 | Publish | 未发出。 | Not Started | — | No |
 
 不作效率声明。HG-01 Gate wait 起止为上轮明确请求至用户本轮批准；平台未提供可审计的消息时间戳，因此不量化分钟数，人工活跃时间不推算。
@@ -92,6 +92,7 @@
 - Preflight：`Passed`。
 - STG-00：`Passed`。
 - STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
-- STG-03/STG-04：`Passed`，HG-02 已明确批准；设计冻结提交待创建。
-- 当前允许的下一动作：按 I-01～I-06 实施并验证。
-- 明确禁止：远端创建、push 或部署；这些仍须等待 HG-03/HG-04。
+- STG-03/STG-04：`Passed`，设计冻结 checkpoint 为 `1c54648`。
+- STG-05：`Passed`；STG-06 自动与真实浏览器证据通过，`HG-03 Pending`。
+- 当前允许的下一动作：仅用户 UAT、记录 HG-03，或修复 UAT 发现的问题。
+- 明确禁止：远端创建、push 或部署；这些仍须等待 HG-04。
