@@ -9,6 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "postbuild": "node scripts/copy-static.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pretest": "pnpm run build",
     "test": "node --test",
     "serve": "node scripts/serve.mjs"
   },

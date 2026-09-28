@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "summary": {
+    "totalRows": 5,
+    "issueCount": 4,
+    "missingValueCount": 3,
+    "duplicateGroupCount": 1,
+    "affectedRowCount": 3
+  },
+  "missingValues": [
+    {
+      "kind": "missing-value",
+      "rowNumber": 2,
+      "sourceLine": 3,
+      "columnIndex": 1,
+      "columnName": "name"
+    },
+    {
+      "kind": "missing-value",
+      "rowNumber": 3,
+      "sourceLine": 4,
+      "columnIndex": 1,
+      "columnName": "name"
+    },
+    {
+      "kind": "missing-value",
+      "rowNumber": 4,
+      "sourceLine": 5,
+      "columnIndex": 2,
+      "columnName": "email"
+    }
+  ],
+  "duplicateGroups": [
+    {
+      "kind": "exact-duplicate",
+      "rowNumbers": [2, 3],
+      "sourceLines": [3, 4]
+    }
+  ],
+  "affectedRows": [2, 3, 4]
+}

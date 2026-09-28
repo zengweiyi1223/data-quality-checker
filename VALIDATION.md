@@ -41,9 +41,9 @@
 
 | 增量 | 状态 | 变更与立即验证 | 独立证据 | Gate | Checkpoint |
 | --- | --- | --- | --- | --- | --- |
-| I-01 工具链与静态空壳 | Passed | TypeScript 安装锁定；typecheck/build 成功；Node test 0 fail；`dist` 经 localhost 回读 HTML/JS 均为 200，CSP 与 module 路径存在。 | `evidence/I-01-SCAFFOLD.md` | 允许进入 I-02 | C2 待提交 |
-| I-02 Core | Not Started | — | — | Blocked by I-01 checkpoint | — |
-| I-03 Adapter | Not Started | — | — | Blocked by I-02 | — |
+| I-01 工具链与静态空壳 | Passed | TypeScript 安装锁定；typecheck/build 成功；Node test 0 fail；`dist` 经 localhost 回读 HTML/JS 均为 200，CSP 与 module 路径存在。 | `evidence/I-01-SCAFFOLD.md` | Passed | C2 `4b8de33` |
+| I-02 Core | Passed | 明确类型与 `checkTable`；6 个绕过 UI/Adapter 的测试通过；冻结 Oracle deep equality；Core 禁用符号扫描无命中。 | `evidence/I-02-CORE.md` | 允许进入 I-03 | C3 待提交 |
+| I-03 Adapter | Not Started | — | — | Blocked by I-02 checkpoint | — |
 | I-04 UI | Not Started | — | — | Blocked by I-03 | — |
 | I-05 安全与构建往返 | Not Started | — | — | Blocked by I-04 | — |
 | I-06 综合验收候选 | Not Started | — | — | Blocked by I-05 | — |
