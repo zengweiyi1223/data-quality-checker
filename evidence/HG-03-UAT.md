@@ -2,7 +2,7 @@
 
 - 日期：2026-09-28（America/Los_Angeles）
 - 候选：C6 `c734f6c4089d78ec57b16a8c8c88b3ace7c36718`
-- 状态：人工事实已收到；明确 HG-03 approval pending。
+- 状态：`Passed — HG-03 approved 2026-09-28`。
 
 ## 用户原始确认
 
@@ -24,10 +24,10 @@
 
 ## Human Gate 判定
 
-上述证据满足 UAT 操作事实的一部分，并实质支持成功、错误恢复与刷新清除状态。Contract 的 HG-03 仍要求 Human Approver 明确批准，因此当前：
+上述证据满足 UAT 操作事实，并实质支持成功、错误恢复与刷新清除状态。Human Approver 于 2026-09-28 明确回复“批准 HG-03”，因此当前：
 
 - 人工观察：`Received`
-- HG-03 approval：`Pending`
-- 继续授权：`No`
+- HG-03 approval：`Passed`
+- 继续授权：`Yes — local release preparation only`
 
-在收到明确“批准 HG-03”前，不进入发布准备或 HG-04。
+远端创建、push 和公开部署仍未获授权，必须等待 HG-04。

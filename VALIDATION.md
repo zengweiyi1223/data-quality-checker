@@ -1,6 +1,6 @@
 # data-quality-checker — Run 001 验证记录
 
-- 状态：`In Progress — STG-05 Passed；HG-03 Pending`
+- 状态：`In Progress — STG-06 Passed；HG-04 Pending`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
 - 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
@@ -32,8 +32,8 @@
 | STG-03 | Passed | 技术方案、UI、Core API、Adapter、测试、静态构建与 Pages 方案经 HG-02 批准。 | `TECH_DESIGN.md` | DCS-003/004 | C1 |
 | STG-04 | Passed | 工具预检、原子计划、Git checkpoint 和记录映射经 HG-02 批准。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | C1 |
 | STG-05 | Passed | I-01～I-05 已逐项 Execute–Verify；I-06 自动综合验收候选通过。 | `evidence/I-01-SCAFFOLD.md` 至 `evidence/I-06-INTEGRATED.md` | DEV-001 | C2～C6 |
-| STG-06 | In Progress | 固定 Oracle、Core、Adapter、真实浏览器、构建重载和 Network 证据已通过；等待用户 UAT。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | — | HG-03 pending |
-| STG-07 | Not Started | 必须等待 HG-03 与 HG-04。 | — | — | — |
+| STG-06 | Passed | 固定 Oracle、Core、Adapter、真实浏览器、构建重载和 Network 证据通过；用户完成 UAT 并明确批准 HG-03。 | `evidence/I-06-INTEGRATED.md`、`UAT.md`、`evidence/HG-03-UAT.md` | — | HG-03 approved |
+| STG-07 | In Progress | 仅进行本地 Release Plan、workflow 审查与回滚演练；外部发布等待 HG-04。 | 后续 release evidence | — | pre-release protection pending |
 | STG-08 | Not Started | 仅在公开部署完成时触发。 | — | — | — |
 | STG-09 | Not Started | — | — | — | — |
 
@@ -54,7 +54,7 @@
 | --- | --- | --- | --- | --- | --- |
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
 | HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
-| HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | 已确认重新选择可恢复、刷新清除状态；三张截图支持成功/错误/Ready。明确 Gate 批准仍 Pending。 | `UAT.md`、`evidence/HG-03-UAT.md`、当前对话 | No |
+| HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | 用户在提交截图与操作确认后明确回复“批准 HG-03”。 | `UAT.md`、`evidence/HG-03-UAT.md`、当前对话 | Yes |
 | HG-04 | Publish | 未发出。 | Not Started | — | No |
 
 不作效率声明。HG-01 Gate wait 起止为上轮明确请求至用户本轮批准；平台未提供可审计的消息时间戳，因此不量化分钟数，人工活跃时间不推算。
@@ -93,6 +93,6 @@
 - STG-00：`Passed`。
 - STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
 - STG-03/STG-04：`Passed`，设计冻结 checkpoint 为 `1c54648`。
-- STG-05：`Passed`；STG-06 自动与真实浏览器证据通过，`HG-03 Pending`。
-- 当前允许的下一动作：仅用户 UAT、记录 HG-03，或修复 UAT 发现的问题。
+- STG-05/STG-06：`Passed`；HG-03 已明确批准。
+- 当前允许的下一动作：本地 Release Plan、workflow 静态准备和回滚演练。
 - 明确禁止：远端创建、push 或部署；这些仍须等待 HG-04。

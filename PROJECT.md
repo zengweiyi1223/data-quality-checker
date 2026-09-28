@@ -1,6 +1,6 @@
 # data-quality-checker — 项目画像与生命周期裁剪
 
-- 状态：`STG-00～05 Passed；STG-06 In Progress；HG-03 Pending`
+- 状态：`STG-00～06 Passed；STG-07 Release Preparation；HG-04 Pending`
 - 记录日期：2026-09-27（America/Los_Angeles）
 - Playbook：`v0.2@dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
