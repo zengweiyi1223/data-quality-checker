@@ -13,7 +13,8 @@
 
 - [原始请求](docs/ORIGINAL_REQUEST.md)
 - [项目画像与裁剪](PROJECT.md)
-- [需求与验收契约草案](REQUIREMENTS.md)
+- [冻结的需求与验收契约](REQUIREMENTS.md)
+- [技术设计与实施计划](TECH_DESIGN.md)
 - [验证记录](VALIDATION.md)
 - [Decision / Deviation](RECORDS.md)
 

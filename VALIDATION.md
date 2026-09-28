@@ -3,7 +3,7 @@
 - 状态：`In Progress — HG-01 Passed；HG-02 Pending`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
-- 需求基线：`Pending after HG-01`
+- 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
 - Run 起点：目标目录经只读检查为空；随后保存原始请求并初始化独立 Git 仓库。
 
 本记录只写已核实事实；待执行项保持 `Not Started`，不预填成功结论。
@@ -25,12 +25,12 @@
 
 | 阶段 | 状态 | 执行与验证摘要 | 证据 | DCS/DEV | Checkpoint |
 | --- | --- | --- | --- | --- | --- |
-| Preflight | Passed | 来源仓库存在且 clean；固定提交存在；指定文件从固定对象完整读取；目标为空。 | `evidence/PREFLIGHT.md` | DCS-001 | 待首提交 |
-| STG-00 | Passed | 画像、修饰器、角色、裁剪、文件映射和 HYP-01～07 观察方式已形成。 | `PROJECT.md` | DCS-002 | 待首提交 |
-| STG-01 | Passed | 目标、用户、场景、价值、可证伪问题与非目标经 HG-01 批准。 | `REQUIREMENTS.md` | — | 需求冻结提交 |
-| STG-02 | Passed | Contract、Oracle、验收、安全、停止、结论、Gate、计时经 HG-01 批准。 | `REQUIREMENTS.md` | — | 需求冻结提交 |
-| STG-03 | In Progress | HG-01 已通过，开始形成技术设计；尚未批准。 | `TECH_DESIGN.md`（形成中） | — | HG-02 后冻结 |
-| STG-04 | In Progress | 开始形成准备、原子计划和 checkpoint 方案；尚未批准。 | `TECH_DESIGN.md`（形成中） | — | HG-02 后冻结 |
+| Preflight | Passed | 来源仓库存在且 clean；固定提交存在；指定文件从固定对象完整读取；目标为空。 | `evidence/PREFLIGHT.md` | DCS-001 | `70fb532` |
+| STG-00 | Passed | 画像、修饰器、角色、裁剪、文件映射和 HYP-01～07 观察方式已形成。 | `PROJECT.md` | DCS-002 | `70fb532` |
+| STG-01 | Passed | 目标、用户、场景、价值、可证伪问题与非目标经 HG-01 批准。 | `REQUIREMENTS.md` | — | `70fb532` |
+| STG-02 | Passed | Contract、Oracle、验收、安全、停止、结论、Gate、计时经 HG-01 批准。 | `REQUIREMENTS.md` | — | `70fb532` |
+| STG-03 | In Progress | 技术方案、UI、Core API、Adapter、测试、静态构建与 Pages 方案已起草；等待 HG-02。 | `TECH_DESIGN.md` | DCS-003/004 | HG-02 后冻结 |
+| STG-04 | In Progress | 工具预检、原子计划、Git checkpoint 和记录映射已起草；等待 HG-02。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | HG-02 后冻结 |
 | STG-05 | Not Started | 必须等待 HG-02。 | — | — | — |
 | STG-06 | Not Started | — | — | — | — |
 | STG-07 | Not Started | 必须等待 HG-03 与 HG-04。 | — | — | — |
@@ -41,8 +41,8 @@
 
 | ID | 用途 | 请求与目标 | 人工确认 | 证据 | 继续授权 |
 | --- | --- | --- | --- | --- | --- |
-| HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + 需求冻结提交 | Yes |
-| HG-02 | Design / Plan | 未发出；HG-01 后形成设计。 | Not Started | — | No |
+| HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
+| HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | Pending | 当前对话 + 后续设计冻结提交 | No |
 | HG-03 | UAT | 未发出。 | Not Started | — | No |
 | HG-04 | Publish | 未发出。 | Not Started | — | No |
 
@@ -56,7 +56,8 @@
 | 固定提交有效 | 两次对象检查返回 `commit` | Git object database | Passed |
 | 来源状态未污染 | porcelain 仅分支元数据，无变更记录 | `git status --porcelain=v2 --branch` | Passed |
 | 文档读取来自固定对象 | `git ls-tree` 列出全部指定路径；逐项 `git show` | Git object path | Passed |
-| 产品 Oracle | 已起草精确表格 | 等待 HG-01 人工审核 | Pending |
+| 产品 Oracle | Contract 中的精确表格 | 用户在 HG-01 明确批准 | Passed / frozen at `70fb532` |
+| 工具路线 | Node/pnpm/Git 可用；npm/npx/tsc 缺失 | 逐命令版本/可用性检查 | Passed with documented constraint |
 
 ## 5. 异常与恢复
 
@@ -77,6 +78,7 @@
 
 - Preflight：`Passed`。
 - STG-00：`Passed`。
-- STG-01/STG-02：`Passed`；Contract 已获 HG-01 批准，等待需求冻结提交。
-- 当前允许的下一动作：STG-03/04 技术设计与准备。
+- STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
+- STG-03/STG-04：设计草案已形成，`HG-02 Pending`。
+- 当前允许的下一动作：仅请求并等待 HG-02，或按用户意见修改设计。
 - 明确禁止：业务代码、依赖安装、远端创建、push 或部署；业务实现必须等待 HG-02。

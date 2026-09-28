@@ -27,3 +27,29 @@
 - 是否需要更新 Contract：否，已纳入草案。
 
 当前无 Deviation。发生实际偏离时追加 `DEV-nnn`，不预填成功结论。
+
+## DCS-003 — 采用零运行时依赖的 Vanilla TypeScript 路线
+
+- 时间：2026-09-27（America/Los_Angeles）
+- 关联阶段：STG-03 / STG-04
+- 背景：项目需要明确类型、静态构建和自动测试，但 UI 与规则规模很小；预检发现 Node、pnpm 可用，npm/npx/全局 tsc 不可用。
+- 可选方案：Vanilla TypeScript + Node test；Vite/Vitest/Papa Parse；React/Vue；原生 JavaScript。
+- 决定及理由：选择浏览器原生 ES modules、TypeScript compiler、Node 内置 test、自有受限 CSV Adapter；仅 TypeScript 为开发依赖。它保留编译期类型和静态构建，同时避免 UI 框架、测试框架和运行时依赖。
+- 影响：CSV 方言被明确限制并通过对照 fixture 验证；若范围外方言成为必须项，必须回到 Contract，而不是悄悄引入大型解析栈。
+- 操作用途：Production + Validation。
+- 验证强度：完整 Core/Adapter 自动测试、生产构建重载和真实浏览器验证。
+- 证据：`TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md`。
+- 是否需要更新 Contract：否；实现方式遵守已冻结架构与非目标。
+
+## DCS-004 — 输入大小护栏与最小隐私控制
+
+- 时间：2026-09-27（America/Los_Angeles）
+- 关联阶段：STG-03 / MD-DATA / MD-SEC
+- 背景：Contract 明确不承诺超大文件或性能；同步本地解析仍需避免明显越界输入冻结页面。
+- 可选方案：无限制；流式解析；固定保护阈值。
+- 决定及理由：在读取前拒绝超过 5 MiB 的文件，并使用 `connect-src 'none'`、无远端资源与网络 API 静态检查强化“不上传”边界。
+- 影响：5 MiB 是范围护栏，不是性能承诺；不增加流式处理。
+- 操作用途：Conditional production + Security validation。
+- 验证强度：边界 UI 测试、CSP/源码检查、浏览器 Network 观察。
+- 证据：`TECH_DESIGN.md`；后续 STG-05/06 evidence。
+- 是否需要更新 Contract：否；它具体化“超大文件不在范围内”，不改变核心验收。

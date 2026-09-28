@@ -3,7 +3,7 @@
 - 状态：`Frozen — HG-01 approved 2026-09-27`
 - Playbook：`v0.2@dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
-- 需求基线提交：`本次冻结 checkpoint；提交号将在提交完成后回填到项目记录`
+- 需求基线提交：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
 
 ## 1. 核心问题
 
