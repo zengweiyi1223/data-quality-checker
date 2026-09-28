@@ -1,6 +1,6 @@
 # data-quality-checker — Run 001 验证记录
 
-- 状态：`In Progress — STG-06 Passed；HG-04 Pending`
+- 状态：`In Progress — STG-06 Passed；STG-07 local preparation Passed；HG-04 Pending`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
 - 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
@@ -33,7 +33,7 @@
 | STG-04 | Passed | 工具预检、原子计划、Git checkpoint 和记录映射经 HG-02 批准。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | C1 |
 | STG-05 | Passed | I-01～I-05 已逐项 Execute–Verify；I-06 自动综合验收候选通过。 | `evidence/I-01-SCAFFOLD.md` 至 `evidence/I-06-INTEGRATED.md` | DEV-001 | C2～C6 |
 | STG-06 | Passed | 固定 Oracle、Core、Adapter、真实浏览器、构建重载和 Network 证据通过；用户完成 UAT 并明确批准 HG-03。 | `evidence/I-06-INTEGRATED.md`、`UAT.md`、`evidence/HG-03-UAT.md` | — | HG-03 approved |
-| STG-07 | In Progress | 仅进行本地 Release Plan、workflow 审查与回滚演练；外部发布等待 HG-04。 | 后续 release evidence | — | pre-release protection pending |
+| STG-07 | In Progress / local preparation Passed | Release Plan、手动 workflow、不可变 Action pins 和本地回滚演练通过；外部发布等待 HG-04。 | `RELEASE_PLAN.md`、`evidence/I-07-RELEASE-PREP.md` | DEV-002 | `c8017b9` |
 | STG-08 | Not Started | 仅在公开部署完成时触发。 | — | — | — |
 | STG-09 | Not Started | — | — | — | — |
 
@@ -47,6 +47,7 @@
 | I-04 UI | Passed | File→Adapter→Core→UI 已连接；真实 Edge 验证成功、错误、替换和刷新；精确 DOM Oracle 通过；首次 favicon 404 阻断后修复并完整重跑。 | `evidence/I-04-BROWSER.md`、`evidence/browser-success.png` | Passed | C5 `8b77715` |
 | I-05 安全与构建往返 | Passed | 23/23 测试；无运行时依赖；CSP/网络/存储/模块边界静态检查；两次干净构建全文件 hash 相同；新服务器/Edge 重载与 5 MiB 护栏通过。 | `evidence/I-05-SECURITY-BUILD.md` | Passed | `bc4cee3` |
 | I-06 综合验收候选 | Passed / HG-03 Pending | frozen install、typecheck、23/23、build、Edge 全流程重跑通过；AC-01～09 机器证据齐备，人工体验尚待用户确认。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | 停在 HG-03 | C6 `c734f6c` |
+| I-07 本地回滚与发布准备 | Passed / HG-04 Pending | workflow 仅手动触发且依赖锁定完整 commit；frozen install、typecheck、23/23、双构建一致；隔离恢复 7/7 hash 相同。首次 SVG 行尾差异被阻断、修复并完整复验。 | `RELEASE_PLAN.md`、`evidence/I-07-RELEASE-PREP.md` | 停在 HG-04 | `c8017b9` |
 
 ## 3. Human Gate
 
@@ -55,7 +56,7 @@
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
 | HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
 | HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | 用户在提交截图与操作确认后明确回复“批准 HG-03”。 | `UAT.md`、`evidence/HG-03-UAT.md`、当前对话 | Yes |
-| HG-04 | Publish | 未发出。 | Not Started | — | No |
+| HG-04 | Publish | 本地 release preparation 已通过；等待用户逐项确认远端仓库、可见性、push 目标、公开 URL、部署动作与残余风险。 | Pending | `RELEASE_PLAN.md` | No |
 
 不作效率声明。HG-01 Gate wait 起止为上轮明确请求至用户本轮批准；平台未提供可审计的消息时间戳，因此不量化分钟数，人工活跃时间不推算。
 
@@ -94,5 +95,6 @@
 - STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
 - STG-03/STG-04：`Passed`，设计冻结 checkpoint 为 `1c54648`。
 - STG-05/STG-06：`Passed`；HG-03 已明确批准。
-- 当前允许的下一动作：本地 Release Plan、workflow 静态准备和回滚演练。
+- STG-07 本地发布准备：`Passed`；公开发布部分尚未开始。
+- 当前允许的下一动作：请求并等待 HG-04 的逐项授权。
 - 明确禁止：远端创建、push 或部署；这些仍须等待 HG-04。

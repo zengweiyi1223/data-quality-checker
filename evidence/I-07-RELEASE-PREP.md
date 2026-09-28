@@ -1,7 +1,7 @@
 # I-07 — 本地发布准备与回滚演练
 
 - 阶段：STG-07 pre-release protection
-- 状态：`In Progress`
+- 状态：`Passed — local pre-release protection；HG-04 Pending`
 - 边界：仅本地文件、Git 对象和验证；HG-04 前无远端、push、Pages 设置或公开部署。
 
 ## 发布工作流选择
@@ -33,8 +33,16 @@
 - 本地 frozen install、typecheck、23/23 测试通过；连续两次 clean build 的 7 个产物 SHA-256 完全一致。
 - 第一次从 C6 `c734f6c` 建立隔离 worktree 时，23/23 测试通过，但 `favicon.svg` 的原始字节 hash 因 Windows checkout 行尾转换不同而不一致；Gate 按 Blocking Validation Failure 停止。
 - 根因：`.gitattributes` 的 `* text=auto` 未对 SVG 明确 `eol=lf`；Git blob 相同，实际产品逻辑与其余 6 个产物相同，但不能满足跨 worktree 的原始字节复现结论。
-- 修复：对 `*.svg` 和 workflow `*.yml` 明确 `text eol=lf`。先建立新的发布准备 checkpoint，再从该 checkpoint 重做隔离恢复演练；完成前本增量不通过。
+- 修复：对 `*.svg` 和 workflow `*.yml` 明确 `text eol=lf`，并建立发布准备 checkpoint `c8017b96e9fc71421a381bf119bb4e5b1bff0c2c`。
+- 复验：从 `c8017b96e9fc71421a381bf119bb4e5b1bff0c2c` 建立全新 detached worktree；frozen install、typecheck、23/23 测试通过；7/7 `dist` 文件与当前批准产品基线的相对路径和 SHA-256 完全一致。
+- 清理：隔离 worktree 路径被限定为系统临时目录下唯一 `dqc-rollback-<guid>`，复验后通过 `git worktree remove --force` 删除并 prune；主工作树和 checkpoint 未被回退或覆盖。
+
+## Gate 结论
+
+- I-07 本地发布保护：`Passed`。
+- 可安全进入：HG-04 请求。
+- 仍禁止：在 HG-04 前创建/绑定远端、push、配置 Pages 或触发 workflow。
 
 ## 结论边界
 
-本记录不证明远端权限、GitHub-hosted runner、Pages 配置、公开 HTTPS 或公开回滚；这些只有 HG-04 后才能验证。
+本记录证明工作流结构、本地 release build 和从已知 checkpoint 恢复的测试/字节产物；不证明远端权限、GitHub-hosted runner、Pages 配置、公开 HTTPS 或公开回滚，这些只有 HG-04 后才能验证。

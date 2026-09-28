@@ -66,3 +66,16 @@ Decision 和 Deviation 按发生顺序记录如下。
 - 证据或 Git 提交：`fixtures/csv-adapter-rfc.json`、`tests/csv-adapter.test.mjs`。
 - 对最终结论的限制：只能声称 JSON 解码产生的 CRLF 输入已验证；不声称 Git checkout 中裸 CSV 字节保持 CRLF。
 - 给 Maintainer 的建议：Project-specific；不建议修改 Playbook Core。
+
+## DEV-002 — SVG 行尾导致首次隔离回滚 hash 不一致
+
+- 时间：2026-09-28（America/Los_Angeles）
+- 关联 Rule ID / Contract 条款：R-VLD-003；AC-11；TECH_DESIGN I-07。
+- 预期行为：从已知良好 checkpoint 建立隔离 worktree，重新 build/test 后全部产物 hash 回到批准基线。
+- 实际行为：首次从 C6 `c734f6c` 恢复时 23/23 测试通过，但 `favicon.svg` 的原始字节 hash 不同；其 Git blob 与产品内容相同，其余 6 个产物一致。
+- 类型与严重度：Validation Failure；Blocking（当次 Gate）。
+- 根因和影响：`.gitattributes` 使用 `* text=auto`，但未固定 SVG 行尾；Windows 新 worktree 的 checkout 转为 CRLF，而主工作树中由 patch 创建的文件保持 LF。行为没有变化，但跨 worktree 字节复现声明不成立。
+- 处理与恢复：在 `.gitattributes` 中固定 `*.svg text eol=lf`，同时固定 workflow `*.yml`；建立 `c8017b9` checkpoint 后完整重跑隔离恢复。
+- 复验证据：frozen install、typecheck、23/23 测试及 7/7 产物 SHA-256 匹配；见 `evidence/I-07-RELEASE-PREP.md`。
+- 对最终结论的限制：只证明当前固定工具版本与当前平台/checkout 规则下的源到产物复现；公开 runner 与实际部署仍须 HG-04 后验证。
+- 给 Maintainer 的建议：Evidence Gate 对静态资产字节一致性有帮助；项目模板可提醒对非代码文本资产显式固定行尾，但不必加入 Playbook Core 强制规则。
