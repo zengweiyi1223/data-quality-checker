@@ -1,7 +1,7 @@
 # data-quality-checker — HG-03 UAT
 
 - 状态：`Ready for Human UAT`
-- 候选版本：本地 C6 release candidate（提交号见 VALIDATION）
+- 候选版本：C6 `c734f6c4089d78ec57b16a8c8c88b3ace7c36718`
 - 本地入口：`http://127.0.0.1:4173/`
 - 固定样本：`E:\AIWorkspace\01_Projects\data-quality-checker\fixtures\quality-oracle.csv`
 - 错误样本：`E:\AIWorkspace\01_Projects\data-quality-checker\fixtures\invalid-unclosed.csv`

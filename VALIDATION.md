@@ -46,7 +46,7 @@
 | I-03 Adapter | Passed | CSV 状态机和稳定错误代码；12 个 Adapter 测试通过，含精确标准表、CRLF/引号/嵌入换行与错误边界；全套 18/18。 | `evidence/I-03-ADAPTER.md` | Passed | C4 `86e59fd` |
 | I-04 UI | Passed | File→Adapter→Core→UI 已连接；真实 Edge 验证成功、错误、替换和刷新；精确 DOM Oracle 通过；首次 favicon 404 阻断后修复并完整重跑。 | `evidence/I-04-BROWSER.md`、`evidence/browser-success.png` | Passed | C5 `8b77715` |
 | I-05 安全与构建往返 | Passed | 23/23 测试；无运行时依赖；CSP/网络/存储/模块边界静态检查；两次干净构建全文件 hash 相同；新服务器/Edge 重载与 5 MiB 护栏通过。 | `evidence/I-05-SECURITY-BUILD.md` | Passed | `bc4cee3` |
-| I-06 综合验收候选 | Passed / HG-03 Pending | frozen install、typecheck、23/23、build、Edge 全流程重跑通过；AC-01～09 机器证据齐备，人工体验尚待用户确认。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | 停在 HG-03 | C6 release candidate 待提交 |
+| I-06 综合验收候选 | Passed / HG-03 Pending | frozen install、typecheck、23/23、build、Edge 全流程重跑通过；AC-01～09 机器证据齐备，人工体验尚待用户确认。 | `evidence/I-06-INTEGRATED.md`、`UAT.md` | 停在 HG-03 | C6 `c734f6c` |
 
 ## 3. Human Gate
 
