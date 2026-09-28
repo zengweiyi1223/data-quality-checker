@@ -37,6 +37,17 @@
 | STG-08 | Not Started | 仅在公开部署完成时触发。 | — | — | — |
 | STG-09 | Not Started | — | — | — | — |
 
+### STG-05 原子增量
+
+| 增量 | 状态 | 变更与立即验证 | 独立证据 | Gate | Checkpoint |
+| --- | --- | --- | --- | --- | --- |
+| I-01 工具链与静态空壳 | Passed | TypeScript 安装锁定；typecheck/build 成功；Node test 0 fail；`dist` 经 localhost 回读 HTML/JS 均为 200，CSP 与 module 路径存在。 | `evidence/I-01-SCAFFOLD.md` | 允许进入 I-02 | C2 待提交 |
+| I-02 Core | Not Started | — | — | Blocked by I-01 checkpoint | — |
+| I-03 Adapter | Not Started | — | — | Blocked by I-02 | — |
+| I-04 UI | Not Started | — | — | Blocked by I-03 | — |
+| I-05 安全与构建往返 | Not Started | — | — | Blocked by I-04 | — |
+| I-06 综合验收候选 | Not Started | — | — | Blocked by I-05 | — |
+
 ## 3. Human Gate
 
 | ID | 用途 | 请求与目标 | 人工确认 | 证据 | 继续授权 |

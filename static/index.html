@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta
+      name="description"
+      content="Check a CSV for empty cells and exact duplicate rows entirely in your browser."
+    />
+    <title>Local CSV Quality Checker</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Private by design</p>
+        <h1>Local CSV Quality Checker</h1>
+        <p class="lede">
+          Find empty cells and exact duplicate rows without uploading your file.
+        </p>
+      </header>
+
+      <section class="panel upload-panel" aria-labelledby="upload-heading">
+        <div>
+          <h2 id="upload-heading">Choose a CSV file</h2>
+          <p class="privacy-note">
+            Your file is read in this browser tab. This app has no upload endpoint,
+            analytics, or cloud storage.
+          </p>
+        </div>
+        <label class="file-picker" for="csv-file">Select CSV</label>
+        <input id="csv-file" name="csv-file" type="file" accept=".csv,text/csv" />
+        <p class="limit-note">One UTF-8 CSV, up to 5 MiB.</p>
+      </section>
+
+      <section class="panel status-panel" aria-labelledby="status-heading">
+        <div>
+          <p class="section-label">Current status</p>
+          <h2 id="status-heading">Ready</h2>
+        </div>
+        <p id="status-message" role="status" aria-live="polite">
+          Select a CSV file to begin.
+        </p>
+      </section>
+
+      <section id="report" class="report" aria-labelledby="report-heading" hidden>
+        <div class="report-heading">
+          <div>
+            <p class="section-label">Quality report</p>
+            <h2 id="report-heading">Results</h2>
+          </div>
+          <p id="report-file" class="file-name"></p>
+        </div>
+
+        <div class="summary-grid" aria-label="Report summary">
+          <article><span>Total rows</span><strong id="total-rows">0</strong></article>
+          <article><span>Issues</span><strong id="issue-count">0</strong></article>
+          <article><span>Affected rows</span><strong id="affected-rows">0</strong></article>
+        </div>
+
+        <section class="finding-section" aria-labelledby="missing-heading">
+          <div class="finding-title">
+            <h3 id="missing-heading">Empty cells</h3>
+            <span id="missing-count" class="badge">0</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Data row</th><th>Source line</th><th>Column</th></tr></thead>
+              <tbody id="missing-body"></tbody>
+            </table>
+          </div>
+          <p id="missing-empty" class="empty-state">No empty cells found.</p>
+        </section>
+
+        <section class="finding-section" aria-labelledby="duplicate-heading">
+          <div class="finding-title">
+            <h3 id="duplicate-heading">Exact duplicate rows</h3>
+            <span id="duplicate-count" class="badge">0</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Data rows</th><th>Source lines</th></tr></thead>
+              <tbody id="duplicate-body"></tbody>
+            </table>
+          </div>
+          <p id="duplicate-empty" class="empty-state">No duplicate groups found.</p>
+        </section>
+      </section>
+
+      <footer>
+        <p>
+          Empty means an exactly empty field. Spaces are kept. Values are compared
+          as text, with no type or date inference.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="./assets/ui/app.js"></script>
+  </body>
+</html>
