@@ -1,6 +1,6 @@
 # data-quality-checker — 技术设计与实施计划
 
-- 状态：`Draft — Awaiting HG-02`
+- 状态：`Frozen — HG-02 approved 2026-09-27`
 - Contract：`HG-01 frozen@70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
 - Playbook：`v0.2@dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
@@ -350,4 +350,4 @@ HG-04 前只允许在本地准备并审查部署工作流文件，不创建远�
 6. GitHub Pages Actions 方案及 HG-04 外部写入边界；
 7. I-00～I-09 原子计划和 C0～C7 checkpoint。
 
-未经明确 HG-02 批准，不创建 `src/**`、package manifest、fixture、测试、构建/部署脚本或业务代码。
+HG-02 已于 2026-09-27 获当前用户明确批准。本文件冻结为实施设计；之后影响架构边界、依赖、测试 Oracle、部署或原子计划的变化必须记录 Decision/Deviation 并形成独立版本点。

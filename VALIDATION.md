@@ -1,6 +1,6 @@
 # data-quality-checker — Run 001 验证记录
 
-- 状态：`In Progress — HG-01 Passed；HG-02 Pending`
+- 状态：`In Progress — HG-02 Passed；STG-05 In Progress`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
 - 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
@@ -29,9 +29,9 @@
 | STG-00 | Passed | 画像、修饰器、角色、裁剪、文件映射和 HYP-01～07 观察方式已形成。 | `PROJECT.md` | DCS-002 | `70fb532` |
 | STG-01 | Passed | 目标、用户、场景、价值、可证伪问题与非目标经 HG-01 批准。 | `REQUIREMENTS.md` | — | `70fb532` |
 | STG-02 | Passed | Contract、Oracle、验收、安全、停止、结论、Gate、计时经 HG-01 批准。 | `REQUIREMENTS.md` | — | `70fb532` |
-| STG-03 | In Progress | 技术方案、UI、Core API、Adapter、测试、静态构建与 Pages 方案已起草；等待 HG-02。 | `TECH_DESIGN.md` | DCS-003/004 | HG-02 后冻结 |
-| STG-04 | In Progress | 工具预检、原子计划、Git checkpoint 和记录映射已起草；等待 HG-02。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | HG-02 后冻结 |
-| STG-05 | Not Started | 必须等待 HG-02。 | — | — | — |
+| STG-03 | Passed | 技术方案、UI、Core API、Adapter、测试、静态构建与 Pages 方案经 HG-02 批准。 | `TECH_DESIGN.md` | DCS-003/004 | C1 |
+| STG-04 | Passed | 工具预检、原子计划、Git checkpoint 和记录映射经 HG-02 批准。 | `TECH_DESIGN.md`、`evidence/STG-04-PREFLIGHT.md` | DCS-003 | C1 |
+| STG-05 | In Progress | HG-02 已通过；按 I-01～I-06 原子循环实施。 | 后续 evidence | — | C2～C6 |
 | STG-06 | Not Started | — | — | — | — |
 | STG-07 | Not Started | 必须等待 HG-03 与 HG-04。 | — | — | — |
 | STG-08 | Not Started | 仅在公开部署完成时触发。 | — | — | — |
@@ -42,7 +42,7 @@
 | ID | 用途 | 请求与目标 | 人工确认 | 证据 | 继续授权 |
 | --- | --- | --- | --- | --- | --- |
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
-| HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | Pending | 当前对话 + 后续设计冻结提交 | No |
+| HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
 | HG-03 | UAT | 未发出。 | Not Started | — | No |
 | HG-04 | Publish | 未发出。 | Not Started | — | No |
 
@@ -79,6 +79,6 @@
 - Preflight：`Passed`。
 - STG-00：`Passed`。
 - STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
-- STG-03/STG-04：设计草案已形成，`HG-02 Pending`。
-- 当前允许的下一动作：仅请求并等待 HG-02，或按用户意见修改设计。
-- 明确禁止：业务代码、依赖安装、远端创建、push 或部署；业务实现必须等待 HG-02。
+- STG-03/STG-04：`Passed`，HG-02 已明确批准；设计冻结提交待创建。
+- 当前允许的下一动作：按 I-01～I-06 实施并验证。
+- 明确禁止：远端创建、push 或部署；这些仍须等待 HG-03/HG-04。

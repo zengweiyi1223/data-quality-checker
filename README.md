@@ -2,7 +2,7 @@
 
 独立的非 Power BI 跨领域验证项目。目标产品是一个在浏览器本地解析 CSV、检查空值与完全重复行、并返回结构化 `QualityReport` 的静态 Web 应用。
 
-当前状态：`HG-01 Passed；STG-03/STG-04 In Progress`。尚未进入业务实现。
+当前状态：`HG-02 Passed；STG-05 In Progress`。
 
 固定方法基线：
 
