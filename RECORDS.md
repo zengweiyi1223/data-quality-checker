@@ -26,7 +26,7 @@
 - 证据：`PROJECT.md` 的 HYP-01 观察项。
 - 是否需要更新 Contract：否，已纳入草案。
 
-当前无 Deviation。发生实际偏离时追加 `DEV-nnn`，不预填成功结论。
+Decision 和 Deviation 按发生顺序记录如下。
 
 ## DCS-003 — 采用零运行时依赖的 Vanilla TypeScript 路线
 
@@ -53,3 +53,16 @@
 - 验证强度：边界 UI 测试、CSP/源码检查、浏览器 Network 观察。
 - 证据：`TECH_DESIGN.md`；后续 STG-05/06 evidence。
 - 是否需要更新 Contract：否；它具体化“超大文件不在范围内”，不改变核心验收。
+
+## DEV-001 — CRLF Adapter fixture 使用 JSON 载体
+
+- 时间：2026-09-27（America/Los_Angeles）
+- 关联 Rule ID / Contract 条款：R-VLD-001；TECH_DESIGN 6.2。
+- 预期行为：用裸 `fixtures/csv-adapter-rfc.csv` 保存 CRLF、引号和字段内换行样本。
+- 实际行为：用 `fixtures/csv-adapter-rfc.json` 的 JSON 转义字符串保存精确输入与独立 expected table。
+- 类型与严重度：受控记录载体偏差；Non-blocking。
+- 原因和影响：仓库文本行尾规范化会让裸 CSV 的 CRLF 字节在平台间不稳定；JSON 解析后可稳定产生真实 CRLF 字符，且把输入与 expected 明确并列。Adapter 行为、范围和验收不变。
+- 临时处理或恢复方式：测试从 JSON 读取 input/expected；如未来需要二进制 fixture，可增加 hash 固定的 binary asset。
+- 证据或 Git 提交：`fixtures/csv-adapter-rfc.json`、`tests/csv-adapter.test.mjs`。
+- 对最终结论的限制：只能声称 JSON 解码产生的 CRLF 输入已验证；不声称 Git checkout 中裸 CSV 字节保持 CRLF。
+- 给 Maintainer 的建议：Project-specific；不建议修改 Playbook Core。

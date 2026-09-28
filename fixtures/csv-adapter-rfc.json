@@ -1,0 +1,22 @@
+{
+  "input": "id,display_name,note\r\n1,\"Doe, Jane\",\"He said \"\"hello\"\"\"\r\n2,Bob,\"line one\r\nline two\"\r\n",
+  "expected": {
+    "columns": [
+      { "index": 0, "name": "id" },
+      { "index": 1, "name": "display_name" },
+      { "index": 2, "name": "note" }
+    ],
+    "rows": [
+      {
+        "rowNumber": 1,
+        "sourceLine": 2,
+        "values": ["1", "Doe, Jane", "He said \"hello\""]
+      },
+      {
+        "rowNumber": 2,
+        "sourceLine": 3,
+        "values": ["2", "Bob", "line one\r\nline two"]
+      }
+    ]
+  }
+}
