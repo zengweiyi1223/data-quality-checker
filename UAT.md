@@ -1,6 +1,6 @@
 # data-quality-checker — HG-03 UAT
 
-- 状态：`Ready for Human UAT`
+- 状态：`Human observations received；explicit HG-03 approval pending`
 - 候选版本：C6 `c734f6c4089d78ec57b16a8c8c88b3ace7c36718`
 - 本地入口：`http://127.0.0.1:4173/`
 - 固定样本：`E:\AIWorkspace\01_Projects\data-quality-checker\fixtures\quality-oracle.csv`
@@ -38,3 +38,14 @@
 若全部接受，请明确回复：`批准 HG-03`。
 
 若不接受，请指出步骤、实际结果和预期；项目将停在 STG-06，修复并重新验证，不进入发布准备。
+
+## 已收到的人工证据
+
+2026-09-28，用户确认：
+
+- 再次选择固定样本后可恢复到正确报告；
+- 刷新页面后回到 Ready，且不保留先前文件或报告。
+
+随附截图还显示固定样本的 5/4/3 摘要、精确问题位置，以及错误样本的未闭合引号提示。证据索引见 `evidence/HG-03-UAT.md`。
+
+这些事实已经记录，但 Human Gate 仍要求一句明确的 `批准 HG-03`；在此之前继续授权保持 `No`。

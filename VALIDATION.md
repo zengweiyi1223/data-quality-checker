@@ -54,7 +54,7 @@
 | --- | --- | --- | --- | --- | --- |
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
 | HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
-| HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | Pending | `UAT.md` + 当前对话 | No |
+| HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | 已确认重新选择可恢复、刷新清除状态；三张截图支持成功/错误/Ready。明确 Gate 批准仍 Pending。 | `UAT.md`、`evidence/HG-03-UAT.md`、当前对话 | No |
 | HG-04 | Publish | 未发出。 | Not Started | — | No |
 
 不作效率声明。HG-01 Gate wait 起止为上轮明确请求至用户本轮批准；平台未提供可审计的消息时间戳，因此不量化分钟数，人工活跃时间不推算。
