@@ -16,6 +16,7 @@
 - [冻结的需求与验收契约](REQUIREMENTS.md)
 - [技术设计与实施计划](TECH_DESIGN.md)
 - [HG-03 UAT 指南](UAT.md)
+- [发布计划与 HG-04 确认项](RELEASE_PLAN.md)
 - [验证记录](VALIDATION.md)
 - [Decision / Deviation](RECORDS.md)
 
