@@ -21,6 +21,9 @@ if (dirname(profilePath) !== tempRoot || !basename(profilePath).startsWith("dqc-
   throw new Error(`Unexpected browser profile path: ${profilePath}`);
 }
 
+const oversizedFixturePath = resolve(profilePath, "oversized.csv");
+await writeFile(oversizedFixturePath, Buffer.alloc(5 * 1024 * 1024 + 1, 65));
+
 function delay(milliseconds) {
   return new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
 }
@@ -265,6 +268,20 @@ try {
   const fileOperationRequests = requests.slice(requestCountBeforeFile);
   assert.equal(fileOperationRequests.length, 0, "Checking a local file must make no requests");
 
+  await selectFile(client, oversizedFixturePath);
+  await waitForExpression(
+    client,
+    'document.querySelector("#status-heading")?.textContent === "File is outside this project’s range"',
+  );
+  const oversizedState = await evaluateValue(
+    client,
+    '({ message: document.querySelector("#status-message")?.textContent, reportHidden: document.querySelector("#report")?.hidden })',
+  );
+  assert.deepEqual(oversizedState, {
+    message: "Choose a CSV no larger than 5 MiB. No file content was read.",
+    reportHidden: true,
+  });
+
   await selectFile(client, invalidFixturePath);
   await waitForExpression(
     client,
@@ -322,6 +339,7 @@ try {
         browser: "Microsoft Edge (installed)",
         initialState,
         successState,
+        oversizedState,
         errorState,
         replacementState,
         refreshedState,
