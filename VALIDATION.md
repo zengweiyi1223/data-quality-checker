@@ -43,9 +43,9 @@
 | --- | --- | --- | --- | --- | --- |
 | I-01 工具链与静态空壳 | Passed | TypeScript 安装锁定；typecheck/build 成功；Node test 0 fail；`dist` 经 localhost 回读 HTML/JS 均为 200，CSP 与 module 路径存在。 | `evidence/I-01-SCAFFOLD.md` | Passed | C2 `4b8de33` |
 | I-02 Core | Passed | 明确类型与 `checkTable`；6 个绕过 UI/Adapter 的测试通过；冻结 Oracle deep equality；Core 禁用符号扫描无命中。 | `evidence/I-02-CORE.md` | Passed | C3 `12d0e38` |
-| I-03 Adapter | Passed | CSV 状态机和稳定错误代码；12 个 Adapter 测试通过，含精确标准表、CRLF/引号/嵌入换行与错误边界；全套 18/18。 | `evidence/I-03-ADAPTER.md` | 允许进入 I-04 | C4 待提交 |
-| I-04 UI | Not Started | — | — | Blocked by I-03 checkpoint | — |
-| I-05 安全与构建往返 | Not Started | — | — | Blocked by I-04 | — |
+| I-03 Adapter | Passed | CSV 状态机和稳定错误代码；12 个 Adapter 测试通过，含精确标准表、CRLF/引号/嵌入换行与错误边界；全套 18/18。 | `evidence/I-03-ADAPTER.md` | Passed | C4 `86e59fd` |
+| I-04 UI | Passed | File→Adapter→Core→UI 已连接；真实 Edge 验证成功、错误、替换和刷新；精确 DOM Oracle 通过；首次 favicon 404 阻断后修复并完整重跑。 | `evidence/I-04-BROWSER.md`、`evidence/browser-success.png` | 允许进入 I-05 | C5 待提交 |
+| I-05 安全与构建往返 | Not Started | — | — | Blocked by I-04 checkpoint | — |
 | I-06 综合验收候选 | Not Started | — | — | Blocked by I-05 | — |
 
 ## 3. Human Gate
@@ -75,6 +75,8 @@
 | 事件 | 类型 | 严重度 | 影响 | 处理 | 是否保留现场 |
 | --- | --- | --- | --- | --- | --- |
 | 设计文档内部仍写旧设计基线 `4f4e734…` | Evidence Gap | Non-blocking | 可能引起引用歧义，不改变用户明确指定基线 | DCS-001 指定 `2319a690…` 为权威；最终反馈 Maintainer | 是 |
+| computer-use 内核资源路径错误，重置后仍失败 | Environment Failure | Non-blocking | 无法使用该 UI 自动化通道 | 停止该通道；改用已安装 Edge + CDP 的真实浏览器验证，并限制结论 | 是，错误见 I-04 evidence |
+| I-04 首次浏览器运行出现两次 favicon 404 | Validation Failure | Blocking（当次 Gate） | 浏览器 console 非零，I-04 不得通过 | 未进入 I-05；添加受控本地 favicon，重建并完整重跑后 0 error | 是，见 I-04 evidence |
 
 ## 6. 操作用途
 

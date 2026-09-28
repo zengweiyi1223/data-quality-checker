@@ -12,6 +12,7 @@
       content="Check a CSV for empty cells and exact duplicate rows entirely in your browser."
     />
     <title>Local CSV Quality Checker</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -32,8 +33,8 @@
             analytics, or cloud storage.
           </p>
         </div>
-        <label class="file-picker" for="csv-file">Select CSV</label>
         <input id="csv-file" name="csv-file" type="file" accept=".csv,text/csv" />
+        <label class="file-picker" for="csv-file">Select CSV</label>
         <p class="limit-note">One UTF-8 CSV, up to 5 MiB.</p>
       </section>
 
@@ -67,7 +68,7 @@
             <h3 id="missing-heading">Empty cells</h3>
             <span id="missing-count" class="badge">0</span>
           </div>
-          <div class="table-wrap">
+          <div id="missing-table" class="table-wrap">
             <table>
               <thead><tr><th>Data row</th><th>Source line</th><th>Column</th></tr></thead>
               <tbody id="missing-body"></tbody>
@@ -81,7 +82,7 @@
             <h3 id="duplicate-heading">Exact duplicate rows</h3>
             <span id="duplicate-count" class="badge">0</span>
           </div>
-          <div class="table-wrap">
+          <div id="duplicate-table" class="table-wrap">
             <table>
               <thead><tr><th>Data rows</th><th>Source lines</th></tr></thead>
               <tbody id="duplicate-body"></tbody>

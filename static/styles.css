@@ -139,8 +139,7 @@ footer {
   transform: translateY(-1px);
 }
 
-#csv-file:focus-visible + .limit-note,
-.file-picker:focus-within {
+#csv-file:focus-visible + .file-picker {
   outline: 3px solid #80cdb5;
   outline-offset: 3px;
 }
@@ -162,6 +161,25 @@ footer {
 .status-panel h2,
 .status-panel p {
   margin-bottom: 0;
+}
+
+.status-panel[data-state="working"] {
+  border-color: #90bdaa;
+}
+
+.status-panel[data-state="success"] {
+  border-color: #75b89e;
+  background: rgb(241 250 246 / 90%);
+}
+
+.status-panel[data-state="error"] {
+  border-color: #d7a39a;
+  background: rgb(255 247 245 / 92%);
+}
+
+.status-panel[data-state="error"] .section-label,
+.status-panel[data-state="error"] h2 {
+  color: #8b3428;
 }
 
 .report {

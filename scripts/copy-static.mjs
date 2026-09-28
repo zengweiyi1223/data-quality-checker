@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const projectRoot = resolve(fileURLToPath(new URL("../", import.meta.url)));
 const staticRoot = resolve(projectRoot, "static");
 const distRoot = resolve(projectRoot, "dist");
-const approvedFiles = ["index.html", "styles.css"];
+const approvedFiles = ["favicon.svg", "index.html", "styles.css"];
 
 await mkdir(distRoot, { recursive: true });
 
