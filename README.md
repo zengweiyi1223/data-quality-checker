@@ -2,7 +2,9 @@
 
 独立的非 Power BI 跨领域验证项目。目标产品是一个在浏览器本地解析 CSV、检查空值与完全重复行、并返回结构化 `QualityReport` 的静态 Web 应用。
 
-当前状态：`STG-06 Passed；STG-07 Release Execution；HG-04 Approved`。
+当前状态：`Complete — STG-00～09 closed；HG-01～04 approved`。
+
+公开应用：https://zengweiyi1223.github.io/data-quality-checker/
 
 固定方法基线：
 
@@ -19,5 +21,7 @@
 - [发布计划与 HG-04 确认项](RELEASE_PLAN.md)
 - [验证记录](VALIDATION.md)
 - [Decision / Deviation](RECORDS.md)
+- [最终交接](HANDOFF.md)
+- [Playbook Feedback](PLAYBOOK_FEEDBACK.md)
 
-远端仓库、push、公开部署和业务代码均未开始。
+Public 源码仓库：https://github.com/zengweiyi1223/data-quality-checker

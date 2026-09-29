@@ -1,6 +1,6 @@
 # data-quality-checker — Release Plan
 
-- 状态：`HG-04 Approved — release execution in progress`
+- 状态：`Completed — public release verified`
 - 发布目标：GitHub Pages 静态站点
 - 外部写入边界：HG-04 前不得创建远端、push、启用 Pages 或触发部署。
 
@@ -21,9 +21,9 @@
 | 创建或使用的远端仓库 | 创建 `zengweiyi1223/data-quality-checker` |
 | 仓库可见性 | Public |
 | push 目标 | `origin/main` |
-| 公开 URL | 预期 `https://zengweiyi1223.github.io/data-quality-checker/`；以 deployment 返回值核实 |
+| 公开 URL | `https://zengweiyi1223.github.io/data-quality-checker/`（Pages API 与实际 HTTPS 回读确认） |
 | 部署动作 | push 已批准 release commit；启用 Pages 的 GitHub Actions source；手动运行工作流并指定该 commit SHA |
-| 残余风险接受 | GitHub/Actions/Pages 可用性；公开源码与合成 fixture；首次远端 workflow 仍需外部验证；真实公开回滚尚未执行 |
+| 残余风险接受 | GitHub/Actions/Pages 可用性；公开源码与合成 fixture；runner 漂移；真实公开回滚尚未执行 |
 
 HG-04 授权只覆盖表中明确的仓库、可见性、push 目标和本次部署。不得将其扩展为其他仓库、付费服务、npm 发布或生产 SLA。授权证据见 `evidence/HG-04-PUBLISH.md`。
 
@@ -44,8 +44,8 @@ HG-04 授权只覆盖表中明确的仓库、可见性、push 目标和本次部
 - 首选：重新手动运行同一工作流，把 `ref` 指向上一已验证的完整 commit SHA；该工作流会从该 Git 对象重新安装、测试、构建并部署。
 - 若失败版本也需要从 `main` 撤销：使用非破坏性的 `git revert`，验证后 push 新提交，再部署该新 SHA；禁止用 force-push 或 `reset --hard` 作为常规回滚。
 - 回滚成功条件：workflow 完成；公开 URL 对应目标 SHA 的构建；固定 fixture smoke 通过；网络仍无 CSV 内容上传。
-- 当前结论限制：HG-04 前只完成本地 checkpoint 恢复演练，不能声称公开环境回滚已验证。
+- 当前结论限制：已完成本地 checkpoint 恢复演练并配置按 SHA 重部署；未执行公开降级，不能声称公开环境回滚已实测。
 
 ## 5. 公开后的最小观察
 
-`MD-OPS` 只启用一次最小可用性和回滚验证：记录公开 URL、HTTPS、release SHA、smoke 结果、回滚或恢复结果与残余风险。不建立监控、值守、告警或 SLA。
+`MD-OPS` 已完成一次最小可用性验证：公开 HTTPS、release SHA、浏览器 smoke、Network 和 7/7 artifact hash 见 `evidence/I-08-PUBLIC-RELEASE.md`。本地回滚已验证，公开降级未执行；未建立监控、值守、告警或 SLA。

@@ -1,6 +1,6 @@
 # data-quality-checker — 项目画像与生命周期裁剪
 
-- 状态：`STG-00～06 Passed；STG-07 Release Execution；HG-04 Approved`
+- 状态：`Complete — STG-00～09 closed；HG-01～04 approved`
 - 记录日期：2026-09-27（America/Los_Angeles）
 - Playbook：`v0.2@dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
@@ -27,7 +27,7 @@
 | Automation | 项目测试/构建工具 | 在已批准路线内执行确定性测试和静态构建；输出仅是证据输入，不能自行批准 Gate。 |
 | Playbook Maintainer | 用户指定的 Playbook Maintainer 对话 | 仅在实验完成后接收 HANDOFF、VALIDATION、PLAYBOOK_FEEDBACK 与最终提交号；唯一有权变更 Playbook。 |
 
-边界：AI 可以起草、执行项目内可逆操作并提出建议；不得代替用户通过 Human Gate，不得创建远端、push、发布、修改来源仓库或修改 Playbook。
+边界：AI 可以起草、执行项目内可逆操作并提出建议；不得代替用户通过 Human Gate。远端创建、push 和发布仅在 HG-04 明确授权范围内执行；来源仓库和 Playbook 不得修改。
 
 ## 3. 阶段裁剪
 
