@@ -1,6 +1,6 @@
 # data-quality-checker — Release Plan
 
-- 状态：`Local preparation only — HG-04 Pending`
+- 状态：`HG-04 Approved — release execution in progress`
 - 发布目标：GitHub Pages 静态站点
 - 外部写入边界：HG-04 前不得创建远端、push、启用 Pages 或触发部署。
 
@@ -14,18 +14,18 @@
 
 ## 2. HG-04 必须逐项确认
 
-以下字段在用户明确确认前保持未定，不推断账号或仓库名：
+用户已在 HG-04 明确确认：
 
 | 项目 | 待确认值 |
 | --- | --- |
-| 创建或使用的远端仓库 | `TBD`（现有 URL 或明确 owner/repository） |
-| 仓库可见性 | `TBD`（Public / Private；需满足所用 GitHub 计划的 Pages 可用性） |
-| push 目标 | `TBD`（remote、branch；建议 `origin/main`） |
-| 公开 URL | `TBD`（确认仓库后按 Pages 设置核实，不仅按命名猜测） |
+| 创建或使用的远端仓库 | 创建 `zengweiyi1223/data-quality-checker` |
+| 仓库可见性 | Public |
+| push 目标 | `origin/main` |
+| 公开 URL | 预期 `https://zengweiyi1223.github.io/data-quality-checker/`；以 deployment 返回值核实 |
 | 部署动作 | push 已批准 release commit；启用 Pages 的 GitHub Actions source；手动运行工作流并指定该 commit SHA |
 | 残余风险接受 | GitHub/Actions/Pages 可用性；公开源码与合成 fixture；首次远端 workflow 仍需外部验证；真实公开回滚尚未执行 |
 
-HG-04 授权只覆盖表中明确的仓库、可见性、push 目标和本次部署。不得将其扩展为其他仓库、付费服务、npm 发布或生产 SLA。
+HG-04 授权只覆盖表中明确的仓库、可见性、push 目标和本次部署。不得将其扩展为其他仓库、付费服务、npm 发布或生产 SLA。授权证据见 `evidence/HG-04-PUBLISH.md`。
 
 ## 3. HG-04 后的原子发布步骤
 

@@ -1,6 +1,6 @@
 # data-quality-checker — Run 001 验证记录
 
-- 状态：`In Progress — STG-06 Passed；STG-07 local preparation Passed；HG-04 Pending`
+- 状态：`In Progress — STG-06 Passed；STG-07 release execution；HG-04 Approved`
 - Playbook 基线：`dff3a717d59935697e310a29caf6b29dff11ff11`
 - 生命周期设计：`2319a6904cd1dba0b696e59b9376889a3179b068`
 - 需求基线：`70fb532bd31b9ffcf0794eafd41b583621ab4ed4`
@@ -56,7 +56,7 @@
 | HG-01 | Contract | 审核 `PROJECT.md` 与 `REQUIREMENTS.md`。 | 用户明确回复“批准 HG-01” | 当前对话 + `70fb532` | Yes |
 | HG-02 | Design / Plan | 审核 `TECH_DESIGN.md` 的技术路线、边界、测试、部署和原子计划。 | 用户明确回复“批准 HG-02” | 当前对话 + 设计冻结提交 | Yes |
 | HG-03 | UAT | 用户实际选择固定 fixture，核对结果、隐私说明、错误恢复和使用体验。 | 用户在提交截图与操作确认后明确回复“批准 HG-03”。 | `UAT.md`、`evidence/HG-03-UAT.md`、当前对话 | Yes |
-| HG-04 | Publish | 本地 release preparation 已通过；等待用户逐项确认远端仓库、可见性、push 目标、公开 URL、部署动作与残余风险。 | Pending | `RELEASE_PLAN.md` | No |
+| HG-04 | Publish | 用户确认创建 `zengweiyi1223/data-quality-checker` Public 仓库，push `origin/main`，按实际 Pages URL 验证，并接受所列残余风险；用户本人完成 `workflow` scope 授权。 | Approved | `RELEASE_PLAN.md`、`evidence/HG-04-PUBLISH.md`、当前对话 | Yes |
 
 不作效率声明。HG-01 Gate wait 起止为上轮明确请求至用户本轮批准；平台未提供可审计的消息时间戳，因此不量化分钟数，人工活跃时间不推算。
 
@@ -95,6 +95,6 @@
 - STG-01/STG-02：`Passed`，需求冻结 checkpoint 为 `70fb532`。
 - STG-03/STG-04：`Passed`，设计冻结 checkpoint 为 `1c54648`。
 - STG-05/STG-06：`Passed`；HG-03 已明确批准。
-- STG-07 本地发布准备：`Passed`；公开发布部分尚未开始。
-- 当前允许的下一动作：请求并等待 HG-04 的逐项授权。
-- 明确禁止：远端创建、push 或部署；这些仍须等待 HG-04。
+- STG-07 本地发布准备：`Passed`；HG-04 已批准，公开发布执行中。
+- 当前允许的下一动作：仅向获批的 `zengweiyi1223/data-quality-checker` 创建 Public 远端、push `origin/main`、部署和验证。
+- 仍禁止：其他远端/分支、force-push、付费服务、npm 发布，以及未另行批准的公开降级演练。
